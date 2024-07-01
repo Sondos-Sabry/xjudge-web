@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/ApiServices/user.service';
 import { Router } from '@angular/router';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-invitation',
   templateUrl: './invitation.component.html',
-  styleUrls: ['./invitation.component.css']
+  styleUrls: ['./invitation.component.css'],
+
 })
 export class InvitationComponent implements OnInit {
   invitations: any[] = [];
@@ -54,5 +56,15 @@ export class InvitationComponent implements OnInit {
     );
   }
 
+  colors = [
+    { color: 'primary', textColor: 'primary' },
+    { color: 'secondary', textColor: 'secondary' },
+    { color: 'success', textColor: 'success' },
+    { color: 'danger', textColor: 'danger' },
+    { color: 'warning', textColor: 'warning' },
+    { color: 'info', textColor: 'info' },
+    { color: 'light' },
+    { color: 'dark' }
+  ];
   
 }
