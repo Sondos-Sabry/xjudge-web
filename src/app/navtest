@@ -1,1738 +1,264 @@
-/* /*
-.video-player {
-    width: 300px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    transition: box-shadow 0.3s ease;
-  }
-  
-  .video-player:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
-  
-  .video-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  .video-controls {
-    display: flex;
-    align-items: center;
-  }
-  
-  .play-button {
-    width: 50px;
-    height: 50px;
-    background-color: #ff6347;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-  }
-  
-  .play-button:hover {
-    transform: scale(1.1);
-  }
-  
-  .progress-bar {
-    background-color: #eee;
-    height: 10px;
-    width: 100%;
-    margin: 0 10px;
-    position: relative;
-    border-radius: 5px;
-  }
-  
-  .progress {
-    height: 100%;
-    background-color: #ff6347;
-    width: 50%; 
-    border-radius: 5px;
-    transition: width 0.3s ease;
-  } */
+/* 
 
-  .sec1 ,
-  .sec2{
-    
-    margin-top: 20vh;
-    display: flex;
-   
-  }
-  .image .img {
-    max-width: 100%;
-    padding-left: 3px;
-    height: auto;
-    padding-top: 138px;
-    margin-left: 10px;
-   
-  }
-  .text h1{
-    font-weight: 500;
-    font-size: 40px;
-    color: white;
-    line-height: 1.1;
-
-  }
-.intro-title{
-  position: relative;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-.text p {
-  opacity: 0.5;
-  margin-top: 40px;
-  color: white;
-  margin: auto;
-  max-width: 600px;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 1.9em;
-  letter-spacing: 0.03em;
-}
-.text a {
-  margin-top: 30px;
-  background: #1da09c;
-  color: white;
-  font-weight: 300;
-  letter-spacing: 0.03em;
-  font-size: 15px;
-}
-/* section 2 */
-/* .middle_sec{
-  width: 100%;
-  height: 100%;
-  transform: skewY(12deg);   
-  transform-origin: 100%;
-  background: linear-gradient(240deg, #222222 15%, #373737 70%, #3c4859 94%);
-  background: linear-gradient(-150deg, #222222 15%, #373737 70%, #3c4859 94%);
-
-
-} */
-.separator{
-  width: 0;
-  height: 0;
-  border-right: 100vw solid transparent;
-  border-bottom: 14.9vw solid #fff;
-  /* margin-top: -7.9vw;
-  margin-left: -108px; */
-  margin-top: -6.9vw;
-  margin-left: -140px;
-
-}
-.sec2{
-  background-color: #fff;
-  padding: 0;
-  margin-top: -1px;
-    height: 370px;
-  justify-content: space-around;
-  width: 100% !important;
-  margin-left: 0;
-  left: 0px;
-  position: absolute;
-}
-.sec2 .row{
-  display: flex;
-}
-.sec2 .column{
-  flex: 1;
-}
-.intro-title .Explor h2{
-  line-height: 1.2em;
-    text-align: right;
-    color: #1da09c;
-    font-weight: 500;
-    font-size: 22px;  
-    margin-right: 10px;
-    margin-bottom: 0;
-}
-p.Explore-text {
-  text-align: right;
-  opacity: 0.5 !important;
-  color: #fff;
-  margin-right: -17px;
-  margin: auto;
-  font-size: 15px;
-  line-height: 1.9em;
-  letter-spacing: 0.03em;
-
-}
-
-.feature-icon-base .icon .circle {
-width: 53px;
-    height: 53px;
-    position: absolute;
-    background: #fff;
-    z-index: 10;
-    border-radius: 50%;
-    top: 0;
-    left: 0;
-    right: 0;
-    color: #34a297;
-    bottom: 0;
-    margin: auto;
-    text-align: center;
-}
-.feature-icon-base .icon {
-width: 56px;
-    height: 87px;
-    border-radius: 10px;
-    transform: scale(0.7);
-    color: #34a297;
- 
-  }
-
-.get_Started{
-  color: #3fbbff !important;
-  background-color: transparent !important;
-  margin-top: 15px;
-  /* opacity: 1 !important; */
-  cursor: pointer;
-  font-weight: 400;
-}
-
-/* cards */
-.explore-chapter-base .explore-card-base .explore-card:nth-child(1) .card {
-  left: -70px;
-  transform: scale(0.6);
-}
-.card{
-  /* transform: rotate(12deg);
-  transform-origin:  146% 38%;; */
-  display: inline-flex;
-  transform: skewY(13deg);
-  width: 60%;
-  border: none;
-  background-color: transparent;
-  
-}
-.inner{
-  transform: skewY(10deg);
-  background: linear-gradient(#96d1f9, #00cded);
-  /* transform: rotate(12deg);  */
-  height: 234px;
-  border-radius: 10px;
-   /* transform-origin: 20% 40%; */
-}
-.top p{
-  opacity: 0.5;
-    background: #fff;
-    display: inline-block;
-    border-radius: 5px;
-    height: 15px;
-    width: 50px;
-    margin-right: 10px;
-}
-.sub-title{
-  padding-left: 20px;
-    padding-top: 20px;
-}
-.top .sub-title p.left{
-  width: 85px !important;
-}
-.title .left{
-  width: 30px !important;
-  height: 40px;
-}
-.title .right{
-  width: 100px;
-  height: 40px;
-}
-.play{
-  position: absolute;
-  right: 11px;
-  /* bottom: 38.5px; */
-  height: 62px;
-  /* top: 109px; */
-  width: 59px;
-  background: white;
-  border-radius: 1017px;
-  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.08);
-  font-size: 22.5px;
-  padding-top: 17.25px;
-  padding-left: 5px;
-  color: #e6eaef;
-  text-align: center;
-}
-.end{
-  /* border-bottom-left-radius: 20px; */
-  border-bottom-right-radius: 10px;
-  height: 85px;
-  margin-top: 30px;
-  background: rgba(255, 255, 255, 0.5);
-}
-.end p{
-  border-radius: 10px;
-  display: inline-block;
-  height: 15px;
-  width: 70px;
-  background: #f5f6f8;
-  margin: 20px;
-  margin-top: 36px;
-  margin-right: 114px;
-}
-
-
-
-  @media only screen and(max-width: 992px) {
-    .col-md-6.intro-title{
-      margin-left: 180px;
-      width: 100%;
-    }
-  }
-
-
-  @media (max-width: 768px){
-    .col-md-6.intro-title{
-        width: 100%;
-    }
-.separator{
-    margin-top: -6.9vw;
-    margin-left: -12px;
-    margin-left: width;
-    width: 107% !important;
-}
-  }
-
-  @media (max-width: 600px) {
-   .sec .row {
-      flex-direction: column;
-    }
-    .Explor h2{
-      margin-left: 85px;
-    }
-  }
-@keyframes SlowFloat {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-10px); }
-}
-.slowfloat2s {
-  animation: SlowFloat 2s infinite  alternate;
-}
-
-.slowfloat3s {
-  animation: SlowFloat 3s infinite  alternate;
-}
- 
-
-
-
-
-/* home*/
-<!-- <div class="header">
-  <div class="background">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
+<div class="frame" style="    width: 60vw; height: 65vh;">
+  <div class="center">
+    <div class="card">
+      <div class="left" style="width: 220px;">
+        <div class="avatar">
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="pic">
+            <img [src]="user.photoUrl ?? defaultProfileImage" [alt]="user.firstName + ' ' + user.lastName" [title]="user.firstName + ' ' + user.lastName" class="w-100 h-100 " style="border-radius: 50%;">
+          <!-- <img src="https://www.pngplay.com/wp-content/uploads/12/User-Avatar-Profile-Transparent-Free-PNG-Clip-Art.png" class="w-100 h-100 " alt=""> -->
+          </div>
+        </div>
+        <div class="info">
+          <h2 class="mb-3">{{user.firstName}} {{user.lastName}}</h2>
+          <p><strong>Handle:</strong> {{user.handle}}</p>
+          <p><strong>School:</strong> {{user.school ?? 'None'}}</p>
+          <p><strong>Email:</strong> {{user.email}} <i *ngIf="user.isVerified" class="fas fa-check text-success"></i></p></div>        
+        </div>
+      <div class="right">
+        <div class="stats posts">
+          <span class="big">Overall</span><span class="small">{{user.solvedCount + user.attemptedCount}}</span>
+        </div>
+        <div class="stats likes">
+          <span class="big">Solved</span><span class="small">{{user.solvedCount}}</span>
+        </div>
+        <div class="stats flwrs">
+          <span class="big">Attempted</span><span class="small">{{user.attemptedCount}}</span>
+        </div>
+      <div class="text-center mt-4">
+        <button *ngIf="isTheRightUser" button class="primary flw"
+          (click)="openUpdateProfileDialog()">Update Profile</button>
+      </div></div>
+      
+    </div>
   </div>
-</div> -->
-<div class="all_page " style="   background-color: #373737 ; " >
-  <!-- Section 1 -->
-  <section class="sec1">
-    <div class=" text-center hero container">
-      <div class="row ">
-        <div class="col-md-6 d-none d-lg-block image">
-          <img class="w-88" ngSrc="/assets/images/home1.jpg" alt="" height="346" width="509">
-        </div>
-        <div class=" col-md-6 intro-title text">
-          <h1 class="text-white mt-4">A New Way to Learn</h1>
-          <p class="text-white">X-Judge is the best platform to help you enhance your skills, expand<br> <span
-              style="padding-left: 5px;"> knowledge and prepare for technical interviews.</span></p>
-          <button *ngIf="!isLogin" class="register btn " routerLink="/register">Create Account <i
-              class="fa fa-angle-right" aria-hidden="true"></i></button>
-          <button *ngIf="isLogin" class="register btn" routerLink="/problem">All Problems <i class="fa fa-angle-right"
-              aria-hidden="true"></i></button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="separator"></div>
-
-  <!-- Section 2 -->
-  <section class="sec2 ">
-    <div class=" text-center row w-100">
-      <div class="row container" style="    height: max-content;">
-        <div class="column img col-sm-6 order-md-2 col-sm-push-6">
-          <div class="explore-card-base">
-            <div class="explore-card">
-              <div class="card slowfloat2s">
-                <div class="inner"
-                  style="opacity: 0.2; background: linear-gradient(#ffd57f, #ffb601);     width: 80%; height: 59%; margin-top: 3px;">
-                  <div class="top">
-                    <div class="sub-title">
-                      <p class="left"></p>
-                      <p></p>
-                    </div>
-                    <div class="title">
-                      <p class="left"></p>
-                      <p class="right"></p>
-                    </div>
-                  </div>
-                  <div class="play">
-                    <i class="fa fa-play" aria-hidden="true"></i>
-                  </div>
-                  <div class="end" style="    height: 70px;     margin-top: 18px; ">
-                    <p style="margin-top: 21px; height:9px"></p>
-                  </div>
+</div> */
 
 
-                </div>
-              </div>
-            </div>
-            <div class="explore-card">
-              <div class="card slowfloat2s">
-                <div class="inner"
-                  style="opacity: 0.6;  background: linear-gradient(#b9f4bc, #8dc63f); width: 80%;height: 88%;  margin-top: -49px;  padding-top: 18px;">
-                  <div class="top">
-                    <div class="sub-title">
-                      <p class="left"></p>
-                      <p></p>
-                    </div>
-                    <div class="title">
-                      <p class="left"></p>
-                      <p class="right"></p>
-                    </div>
-                  </div>
-                  <div class="play">
-                    <i class="fa fa-play" aria-hidden="true"></i>
-                  </div>
-                  <div class="end" style="margin-top: 52px;">
-                    <p></p>
-                  </div>
 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:700,600,300');
 
-                </div>
-              </div>
-            </div>
-            <div class="explore-card">
-              <div class="card slowfloat2s">
-                <div class="inner" style="width: 80%;
-                height: 234px;">
-                  <div class="top">
-                    <div class="sub-title">
-                      <p class="left"></p>
-                      <p></p>
-                    </div>
-                    <div class="title">
-                      <p class="left"></p>
-                      <p class="right"></p>
-                    </div>
-                  </div>
-                  <div class="play">
-                    <i class="fa fa-play" aria-hidden="true"></i>
-                  </div>
-                  <div class="end">
-                    <p></p>
-                  </div>
-
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="column col-md-6 order-md-1 col-sm-push-6 intro-title text">
-          <div class="d-flex Explor">
-            <h2>Start Exploring</h2>
-          </div>
-          <p class="Explore-text w-100" style=" color: black !important; justify-content: center; ">
-            Explore is a well-organized tool that helps you get the most out of<br>
-            X-Judge by providing structure to guide your progress towards the next<br>
-            step in your programming career
-          </p>
-          <div style="      margin-left: 12px;  margin-top: 16px;">
-            <a class="get_Started  " routerLink="problem">Get Started <i class="fa fa-angle-right"
-                aria-hidden="true"></i></a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </section>
-</div>
-
-
-.header .background span:nth-child(1) {
-  display: none;
-  top: 0;
-  width: 33.33333%;
-  right: -16.66666%;
-  background: #373737;
-}
-.header .background span:nth-child(2) {
-  width: 33.33333%;
-  top: 0;
-  right: 16.66666%;
-  left: auto;
-  bottom: auto;
-  background: #2e2e2e;
-}
-
-.header .background span:nth-child(3) {
-  width: 33.33333%;
-  right: 49.99999%;
-  bottom: auto;
-  left: auto;
-  background: #222222;
-}
-
-.header .background span:nth-child(4) {
-  width: 33.33333%;
-  top: 380px;
-  left: -16.66666%;
-  background: #383d44;
-}
-.header .background span:nth-child(5) {
-  width: 33.33333%;
-  right: 0;
-  bottom: 0;
-  background: #2e2e2e;
-}
-.sec1{
-  display: flex;
-  margin-top: 0;
-  padding-top: 20vh;
-  background-color: #373737 ; 
-  /* background: linear-gradient(-150deg, #222222 15%, #373737 70%, #3c4859 94%) !important; */
-}
-
-.sec2 {
-
-  margin-top: 20vh;
-  display: flex;
-
-}
-
-.image .img {
-  max-width: 100%;
-  padding-left: 3px;
-  height: auto;
-  padding-top: 138px;
-  margin-left: 10px;
-
-}
-
-.text h1 {
-  font-weight: 500;
-  font-size: 40px;
-  color: white;
-  line-height: 1.1;
-
-}
-
-.intro-title {
-  position: relative;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-.text p {
-  opacity: 0.5;
-  margin-top: 40px;
-  color: white;
-  margin: auto;
-  max-width: 600px;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 1.9em;
-  letter-spacing: 0.03em;
-}
-
-.text button {
-  border-radius: 18px;
-  margin-top: 30px;
-  background: #1da09c;
-  color: white;
-  font-weight: 300;
-  letter-spacing: 0.03em;
-  font-size: 15px;
-}
-
-/* section 2 */
-/* .middle_sec{
-  width: 100%;
-  height: 100%;
-  transform: skewY(12deg);   
-  transform-origin: 100%;
-  background: -o-linear-gradient(240deg, #222222 15%, #373737 70%, #3c4859 94%);
-  background: linear-gradient(-150deg, #222222 15%, #373737 70%, #3c4859 94%);
-
-
-} */
-.separator {
-  width: 102vw;
-  height: 0;
-  border-right: 100vw solid transparent;
-  border-bottom: 14.9vw solid #fff;
-  /* margin-top: -7.9vw;
-  margin-left: -108px; */
-  margin-top: -6.9vw;
-  margin-left: -140px;
-
-}
-
-.sec2 {
-  background-color: #fff;
-  padding: 0;
-  margin-top: -1px;
-  height: 370px;
-  justify-content: space-around;
-  width: 100% !important;
-  margin-left: 0;
-  left: 0px;
+.frame {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  margin-top: -200px;
+  margin-left: -200px;
+  border-radius: 2px;
+  box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.1);
+  overflow: hidden;
+  background: linear-gradient(to bottom left, rgb(85, 115, 80), rgb(190, 230, 180));
+  background-size: 125% 125%;
+  color: rgb(85, 115, 80);
+  font-family: 'Open Sans', Helvetica, sans-serif;
+  /* -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
 }
 
-.sec2 .row {
-  display: flex;
-  margin-top: 30px;
-}
-
-.sec2 .column {
-  flex: 1;
-}
-
-.intro-title .Explor h2 {
-  line-height: 1.2em;
-  text-align: right;
-  color: #1da09c;
-  font-weight: 500;
-  font-size: 22px;
-  margin-right: 10px;
-  margin-bottom: 0;
-  margin-left: 200px;
-}
-
-.text p{
-  /* text-align: right; */
-  opacity: 0.5 !important;
-  color: #fff !important;
-  margin-right: -17px;
-  margin: auto;
-  font-size: 15px;
-  line-height: 1.9em;
-  margin-top: 20px;
- 
-  letter-spacing: 0.03em;
-
-}
-.sec2 .intro-title{
-  /* margin-left: 204px; */
-  margin-left:103px;
-}
-/* .sec2 .column.img{
-   margin-left: 129px;
-} */
-.feature-icon-base .icon .circle {
-  width: 53px;
-  height: 53px;
+.center {
   position: absolute;
-  background: #fff;
-  z-index: 10;
-  border-radius: 50%;
-  top: 0;
-  left: 0;
-  right: 0;
-  color: #34a297;
-  bottom: 0;
-  margin: auto;
-  text-align: center;
-}
-
-.feature-icon-base .icon {
-  width: 56px;
-  height: 87px;
-  border-radius: 10px;
-  transform: scale(0.7);
-  color: #34a297;
-
-}
-
-.text a.get_Started {
-  color: #0088cc;
-  background-color: transparent !important;
-  margin-top: 15px;
-  text-decoration: none;
-  /* opacity: 1 !important; */
-  cursor: pointer;
-  font-weight: 400;
-}
-.text a.get_Started:hover {
-  color: #3fbbff;
-}
-/* cards */
-.explore-card-base {
-  margin-right: 0;
-  margin-left: 126px;
-  position: relative;
-  height: 300px;
-  width: 260px;
-  perspective: 600px;
-}
-
-.explore-card-base .explore-card {
-  position: absolute;
-
-  perspective: 1000px;
-  height: 100%;
-  width: 100%;
-  transform-origin: 0 50%;
-}
-
-.explore-card-base .explore-card .card {
-  transform-origin: 50% 50%;
-  height: 300px;
-  width: 224px;
-  border-radius: 20px;
-
-}
-
-.explore-card-base .explore-card:nth-child(1) .card {
-  left: -42px;
-  transform: scale(0.6);
-  transform: translateX(-40px) translateY(-40px);
-  /* Adjust position */
-  z-index: 1;
-}
-
-.explore-card-base .explore-card:nth-child(2) {
-  transform: scale(0.8);
-}
-
-.explore-card-base .explore-card:nth-child(2) .card {
-  animation-delay: 800ms;
-  left: -5px;
-  transform: translateX(-20px) translateY(-20px);
-  /* Adjust position */
-  z-index: 2;
-}
-
-.explore-card-base .explore-card:nth-child(3) .card {
-  animation-delay: 1600ms;
-  z-index: 3;
-  margin-left: 45px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .card {
-  /* transform: rotate(12deg);
-  transform-origin:  146% 38%;; */
-  /* display: inline-flex;
-  transform: skewY(13deg);*/
-  width: 60%;
-  border: none;
-  background-color: transparent;
-  transition: transform 0.3s;
-  position: absolute;
-
-}
-
-.inner {
-  transform: skewY(10deg);
-  background: linear-gradient(#96d1f9, #00cded);
-  /* transform: rotate(12deg);  */
-  height: 234px;
-  border-radius: 10px;
-  /* transform-origin: 20% 40%; */
-}
-
-.top p {
-  opacity: 0.5;
-  background: #fff;
-  display: inline-block;
-  border-radius: 5px;
-  height: 15px;
-  width: 50px;
-  margin-right: 10px;
-}
-
-.sub-title {
-  padding-left: 20px;
-  padding-top: 20px;
-}
-
-.top .sub-title p.left {
-  width: 85px !important;
-}
-
-.title .left {
-  width: 30px !important;
-  height: 40px;
-}
-
-.title .right {
-  width: 100px;
-  height: 40px;
-}
-
-.play {
-  position: absolute;
-  right: 11px;
-  /* bottom: 38.5px; */
-  height: 62px;
-  /* top: 109px; */
-  width: 59px;
+  width: 320px;
+  height: 300px;
   background: white;
-  border-radius: 1017px;
-  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.08);
-  font-size: 22.5px;
-  padding-top: 17.25px;
-  padding-left: 5px;
-  color: #e6eaef;
-  text-align: center;
+  box-shadow: 4px 8px 16px 0 rgba(58, 77, 56, 1);
 }
 
-.end {
-  /* border-bottom-left-radius: 20px; */
-  border-bottom-right-radius: 10px;
-  height: 75px;
-  margin-top: 40px;
-  background: rgba(255, 255, 255, 0.5);
+.card .left {
+  position: absolute;
+  left: 0;
+  width: 190px;
+  height: 300px;
+  overflow: hidden;
 }
 
-.end p {
-  border-radius: 10px;
-  display: inline-block;
-  height: 15px;
+.card .left .avatar {
+  position: absolute;
+  left: 60px; 
+  top: 32px;
   width: 70px;
-  background: #f5f6f8;
-  margin: 20px;
-  margin-top: 36px;
-  margin-right: 114px;
+  height: 70px;
+  border-radius: 50%;
+  cursor: pointer;
+  background: rgb(190, 230, 180);
 }
 
-@media (max-width: 1512px) {
-  .all_page{
-    margin-top: -120px;
-  }
-  .sec1 .row{
-    margin-top: 90px;
-  }
-  .row{
-    flex-wrap: nowrap;
-   
-  }
-  .intro-title {
-   /* margin-left: 117px; */
-    /* margin-left: 20px; */
-    text-align: center;
-    justify-content: center;
-}
-.intro-title p br{
-display: none;
-}
-}
-
-@media (max-width: 992px) {
-  .col-md-6.intro-title.text {
-    /* margin-left: 48px; */
-    /* margin-left: 193px; */
-    width: 100%;
-  }
-
-  .explore-card-base {
-    margin-left: 115px ;
-  }
-  .intro-title .Explor h2{
-    margin-left: 146px;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .col-md-6.intro-title {
-    width: 100%;
-  }
-
-  .separator {
-    margin-top: -6.9vw;
-    /* margin-left: -12px; */
-    margin-left: -36px;
-    width: 107% !important;
-  }
-  .sec2 .intro-title{
-    margin-left: 0;
-  }
-  .intro-title .Explor h2{
-    margin-left: 90px !important;
-  }
-
-}
-
-@media (max-width: 600px) {
-  .sec1 .row {
-    flex-direction: column;
-    margin-top: 90px;
-  }
-
-  .Explor h2 {
-    margin-left: 85px;
-  }
-
-  .col-md-6.intro-title.text {
-    margin-left: 0;
-    /* margin-top: -110px; */
-    
-  }
-.sec1 .intro-title{
-  margin-top: 50px
-}
-  .explore-card-base {
-    margin-left: 90px;
-    margin-top: 100px;
-  }
-
-  .intro-title .Explor h2 {
-    /* margin-left: 93px !important; */
-    padding-bottom: 17px;
-  }
-
-  p.Explore-text {
-    color: black !important;
-    text-align: center !important;
-    /* width: 81%; */
-    margin-left: 15px !important;
-    
-  }
-
-  br {
-    display: none;
-  }
-
-  .sec2 {
-    height: 250vh;
-  }
-.sec2 .column.img{
-  /* padding-left: 166px; */
-  /* margin-left: 35px */
-  /* margin-left: 70px; */
-
-}
-  .intro-title a {
-    margin-left: 20px;
-
-  }
-  .row{
-      flex-wrap: wrap;
-  }
-}
-
-@keyframes SlowFloat {
-  0% {
-    transform: translateY(0);
-  }
-
-  100% {
-    transform: translateY(-10px);
-  }
-}
-
-.slowfloat2s {
-  -webkit-animation: SlowFloat 2s infinite alternate;
-  animation: SlowFloat 2s infinite alternate;
-}
-
-.slowfloat3s {
-  -webkit-animation: SlowFloat 3s infinite alternate;
-  animation: SlowFloat 3s infinite alternate;
-}
-
-
-
-
-/* style */
-/* You can add global styles to this file, and also import other style files
- {
-  margin: 0;
-  padding: 0;
+.card .left .avatar .circle {
   box-sizing: border-box;
- }
- 
- body{
-   font-family: Roboto, "Helvetica Neue", sans-serif;
-    height: 100%; 
-    min-height: 100vh !important;
-
-    background-color: #373737 ;    */
- 
- /* }   */ 
-
-
-
-
-
-
-
-
-
-
-
-
-
- <div class="container-fluid">
-  <div class="row">
-    <div class="all_page " style="   background-color: #373737 ; ">
-      <!-- Section 1 -->
-      <section class="sec1">
-        <div class=" text-centercenter ">
-          <div class="row justify-content-between " style="width: max-content;">
-            <div class="col-lg-5  d-none d-lg-block image  ">
-              <img class="h-100 w-100" src="/assets/images/home1.jpg" alt="">
-            </div>
-            <div class="col-lg-6 col-md-12 text  ">
-              <h1 class="text-white mt-4">A New Way to Learn</h1>
-              <p class="text-white">X-Judge is the best platform to help you enhance your skills, expand<br>
-                <span style="padding-left: 5px;"> knowledge and prepare for technical interviews.</span>
-              </p>
-              <button *ngIf="!isLogin" class="register btn " routerLink="/register">Create Account <i
-                  class="fa fa-angle-right" aria-hidden="true"></i></button>
-              <button *ngIf="isLogin" class="register btn" routerLink="/problem">All Problems <i
-                  class="fa fa-angle-right" aria-hidden="true"></i></button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class=" separator mt-md-27"></div>
-
-      <!-- Section 2 -->
-      <section class="container-fluid sec2 d-flex">
-        <div class="row justify-content-between text-center ">
-          <div class="column img col-md-4 col-sm-6 order-md-2 col-sm-push-6 ">
-            <div class="explore-card-base">
-              <div class="explore-card">
-                <div class="card slowfloat2s">
-                  <div class="inner"
-                    style="opacity: 0.2; background: linear-gradient(#ffd57f, #ffb601);     width: 80%; height: 59%; margin-top: 3px;">
-                    <div class="top ">
-                      <div class="sub-title">
-                        <p class="left"></p>
-                        <p></p>
-                      </div>
-                      <div class="title">
-                        <p class="left"></p>
-                        <p class="right"></p>
-                      </div>
-                    </div>
-                    <div class="play">
-                      <i class="fa fa-play" aria-hidden="true"></i>
-                    </div>
-                    <div class="end" style="    height: 70px;     margin-top: 18px; ">
-                      <p style="margin-top: 21px; height:9px"></p>
-                    </div>
-
-
-                  </div>
-                </div>
-              </div>
-              <div class="explore-card">
-                <div class="card slowfloat2s">
-                  <div class="inner"
-                    style="opacity: 0.6;  background: linear-gradient(#b9f4bc, #8dc63f); width: 80%;height: 88%;  margin-top: -49px;  padding-top: 18px;">
-                    <div class="top">
-                      <div class="sub-title">
-                        <p class="left"></p>
-                        <p></p>
-                      </div>
-                      <div class="title">
-                        <p class="left"></p>
-                        <p class="right"></p>
-                      </div>
-                    </div>
-                    <div class="play">
-                      <i class="fa fa-play" aria-hidden="true"></i>
-                    </div>
-                    <div class="end" style="margin-top: 52px;">
-                      <p></p>
-                    </div>
-
-
-                  </div>
-                </div>
-              </div>
-              <div class="explore-card">
-                <div class="card slowfloat2s">
-                  <div class="inner" style="width: 80%;
-                height: 234px;">
-                    <div class="top">
-                      <div class="sub-title">
-                        <p class="left"></p>
-                        <p></p>
-                      </div>
-                      <div class="title">
-                        <p class="left"></p>
-                        <p class="right"></p>
-                      </div>
-                    </div>
-                    <div class="play">
-                      <i class="fa fa-play" aria-hidden="true"></i>
-                    </div>
-                    <div class="end">
-                      <p></p>
-                    </div>
-
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="column col-md-4 order-md-1 col-sm-push-6 intro-title text ">
-            <div class="d-flex Explor ms-md-5 " style="text-align: right; margin-left:20vw !important">
-              <h2 class="pe-2">Start Exploring</h2>
-              <i class=" fa fa-graduation-cap " style="font-size: 2em;" aria-hidden="true"></i>
-            </div>
-            <p class="Explore-text " style=" color: black !important; justify-content: center; text-align:right">
-              Explore is a well-organized tool that helps you get the most out of<br>
-              X-Judge by providing structure to guide your progress towards the next<br>
-              step in your programming career
-            </p>
-            <div style="   text-align: right;   margin-left: 12px;  margin-top: 16px;">
-              <a class="get_Started  " routerLink="problem">Get Started <i class="fa fa-angle-right"
-                  aria-hidden="true"></i></a>
-            </div>
-          </div>
-        </div>
-
-
-      </section>
-
-
-      <!-- <section class="sec3">
-        <div class="feature-icon-base" style="transform: scale(0.7);">
-          <div class="icon red love-icon">
-            <div class="circle">
-              <div class="custom-icon"><img src="/static/images/landing_page/sf.png" alt="San Francisco" width="52"
-                  style="margin-top: -13px;"></div>
-            </div>
-          </div>
-        </div>
-        <div>
-
-        </div>
-      </section>
-    </div> -->
-  </div>
-</div>
-
-
-/*  section 1 */
-.sec1{
-
-  justify-content: center;
-  text-align: center;
-  margin-top: 0;
-  padding-top: 10vh;
-  background-color: #373737 ; 
   position: absolute;
-  /* left: 16vw; */
-  /* right: 17vw; */
-}
-
-.image{
-  z-index:1;
- 
-}
-
-.text h1 {
-  font-weight: 500;
-  font-size: 40px;
-  color: white;
-  line-height: 1.1;
-
-}
-
-.text p {
-  opacity: 0.5;
-  margin-top: 40px;
-  color: white;
-  margin: auto;
-  max-width: 600px;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 1.9em;
-  letter-spacing: 0.03em;
-}
-
-.text button {
-  border-radius: 18px;
-  margin-top: 30px;
-  background: #1da09c;
-  color: white;
-  font-weight: 300;
-  letter-spacing: 0.03em;
-  font-size: 15px;
-}
-
-/* ................................ */
-.separator {
-  position: relative;
-  border-right: 100vw solid transparent;
-  border-bottom: 14.9vw solid #fff;
-  margin-top: 34vh;
-  right:3vw ;
-  width: 100%;
-
-}
-
-.sec2 {
- 
-  background-color: #fff;
-  padding: 0;
-  /* height: 370px; */
-  justify-content: space-around;
-  left: 0px;
-  width: 100%;
-  padding-bottom: 10vh;
-  height: max-content;
-  position: absolute;
-}
-/* .intro-title{
-  width: max-content;
-} */
-
-.Explor h2 {
-  line-height: 1.2em;
-  color: #1da09c;
-  font-weight: 500;
-  font-size: 22px;
-  margin-bottom: 0;
-  text-align: right;
-}
-
-.text p{
-  width: max-content;
-   opacity: 0.5 !important;
-  color: #fff !important;
-  margin: auto;
-  font-size: 15px;
-  line-height: 1.9em;
-  margin-top: 20px;
-  letter-spacing: 0.03em;
-
-}
-
-
-.feature-icon-base .icon .circle {
-  width: 53px;
-  height: 53px;
-  position: absolute;
-  background: #fff;
-  z-index: 10;
   border-radius: 50%;
-  top: 0;
-  left: 0;
-  right: 0;
-  color: #34a297;
-  bottom: 0;
-  margin: auto;
-  text-align: center;
+  transition: all 1.5s ease-in-out;
+  border: 1px solid;
 }
 
-.feature-icon-base .icon {
-  width: 56px;
-  height: 87px;
-  border-radius: 10px;
-  transform: scale(0.7);
-  color: #34a297;
-
+.card .left .avatar .circle:first-child {
+  left: -3px;
+  top: -3px;
+  width: 76px;
+  height: 76px;
+  border-color: rgb(85, 115, 80) rgb(85, 115, 80) rgb(85, 115, 80) transparent;
 }
 
-.text a.get_Started {
-  color: #0088cc;
-  background-color: transparent !important;
-  margin-top: 15px;
-  text-decoration: none;
-  /* opacity: 1 !important; */
-  cursor: pointer;
-  font-weight: 400;
+.card .left .avatar .circle:nth-child(2) {
+  left: -6px;
+  top: -6px;
+  width: 82px;
+  height: 82px;
+  border-color: rgb(85, 115, 80) transparent rgb(85, 115, 80) rgb(85, 115, 80);
 }
-.text a.get_Started:hover {
-  color: #3fbbff;
+
+.card .left .avatar:hover .circle:first-child {
+  transform: rotate(360deg);
 }
-/* cards */
-.explore-card-base {
-  margin-right: 0;
-  margin-left: 140px;
+
+.card .left .avatar:hover .circle:nth-child(2) {
+  transform: rotate(-360deg);
+}
+
+.card .left .avatar .pic {
   position: relative;
-  height: 300px;
-  width: 260px;
-  /* perspective: 600px; */
+  width: inherit;
+  height: inherit;
+  display: block;
+  border-radius: inherit;
 }
 
-.explore-card-base .explore-card {
+.card .left .avatar .pic:after, .card .left .avatar .pic:before {
+  content: "";
   position: absolute;
-
-  perspective: 1000px;
-  height: 100%;
-  width: 100%;
-  transform-origin: 0 50%;
+  width: inherit;
+  height: inherit;
+  display: block;
+  border-radius: inherit;
 }
 
-.explore-card-base .explore-card .card {
-  transform-origin: 50% 50%;
-  height: 300px;
-  width: 224px;
-  border-radius: 20px;
-
-}
-
-.explore-card-base .explore-card:nth-child(1) .card {
-  left: -42px;
-  transform: scale(0.6);
-  transform: translateX(-40px) translateY(-40px);
-  /* Adjust position */
-  z-index: 1;
-}
-
-.explore-card-base .explore-card:nth-child(2) {
-  transform: scale(0.8);
-}
-
-.explore-card-base .explore-card:nth-child(2) .card {
-  animation-delay: 800ms;
-  left: -5px;
-  transform: translateX(-20px) translateY(-20px);
-  /* Adjust position */
-  z-index: 2;
-}
-
-.explore-card-base .explore-card:nth-child(3) .card {
-  animation-delay: 1600ms;
-  z-index: 3;
-  margin-left: 45px;
-}
-
-.card {
-  /* transform: rotate(12deg);
-  transform-origin:  146% 38%;; */
-  /* display: inline-flex;
-  transform: skewY(13deg);*/
-  width: 60%;
-  border: none;
-  background-color: transparent;
-  transition: transform 0.3s;
-  position: absolute;
-
-}
-
-.inner {
-  transform: skewY(10deg);
-  background: linear-gradient(#96d1f9, #00cded);
-  /* transform: rotate(12deg);  */
-  height: 234px;
-  border-radius: 10px;
-  /* transform-origin: 20% 40%; */
-}
-
-.top p {
-  opacity: 0.5;
-  background: #fff;
-  display: inline-block;
-  border-radius: 5px;
-  height: 15px;
-  width: 50px;
-  margin-right: 10px;
-}
-
-.sub-title {
-  padding-left: 20px;
-  padding-top: 20px;
-}
-
-.top .sub-title p.left {
-  width: 85px !important;
-}
-
-.title .left {
-  width: 30px !important;
-  height: 40px;
-}
-
-.title .right {
-  width: 100px;
-  height: 40px;
-}
-
-.play {
-  position: absolute;
-  right: 11px;
-  /* bottom: 38.5px; */
-  height: 62px;
-  /* top: 109px; */
-  width: 59px;
-  background: white;
-  border-radius: 1017px;
-  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.08);
-  font-size: 22.5px;
-  padding-top: 17.25px;
-  padding-left: 5px;
-  color: #e6eaef;
-  text-align: center;
-}
-
-.end {
-  /* border-bottom-left-radius: 20px; */
-  border-bottom-right-radius: 10px;
-  height: 75px;
-  margin-top: 40px;
-  background: rgba(255, 255, 255, 0.5);
-}
-
-.end p {
-  border-radius: 10px;
-  display: inline-block;
-  height: 15px;
-  width: 70px;
-  background: #f5f6f8;
-  margin: 20px;
-  margin-top: 36px;
-  margin-right: 114px;
-}
-@media only screen and (max-width: 768px ) {
-  .sec1{
-  left: 10vw;
-  
-  }
-.mt-md-27{
-  margin-top :40vh !important;
-}
-}
-@media only screen and (max-width: 622px ) {
-  .sec1{
-  left: 2vw
-  
-  }
-.mt-md-27{
-  margin-top :50vh !important;
-}
-}
-
-.feature-icon-base{
-  transform: scale(0.7);
-}
-
-.feature-icon-base 
-.icon::before, 
-.feature-icon-base 
-.icon::after {
-position: absolute;
-width: inherit;
-height: inherit;
-border-radius: inherit;
-background: inherit;
-content: '';
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-margin: auto;
-}
-.feature-icon-base .icon::before {
--webkit-transform: rotate(60deg);
-transform: rotate(60deg);
-}
-.feature-icon-base .icon::after {
--webkit-transform: rotate(-60deg);
-transform: rotate(-60deg);
-}
-.feature-icon-base .icon .circle {
-width: 53px;
-height: 53px;
-position: absolute;
-background: #fff;
-z-index: 10;
-border-radius: 50%;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-margin: auto;
-text-align: center;
-}
-.feature-icon-base .icon .circle .custom-icon {
-font-size: 20px;
-margin-top: 12px;
-}
-
-
-
-
-
-
-
-
-
-/* @media (max-width: 600px) {
-  .sec1{
-  left: 10vw
-  
-  }
-
+/* .card .left .avatar .pic:after {
+  background: radial-gradient(transparent, 90%, rgb(85, 115, 80));
 } */
 
-/*@media (max-width: 1512px) {
-  .all_page{
-    margin-top: -120px;
-  }
-  .sec1 .row{
-    margin-top: 90px;
-  }
-  .row{
-    flex-wrap: nowrap;
-   
-  }
-  .intro-title {
+.card .left .info {
+  position: absolute;
   text-align: center;
-    justify-content: center;
-}
-.intro-title p br{
-display: none;
-}
+  top: 122px; /* 70 + 52 */
+  width: 100%;
 }
 
- @media (max-width: 992px) {
-  .col-md-6.intro-title.text {
-   width: 100%;
-  }
-
-  .explore-card-base {
-    margin-left: 115px ;
-  }
-  .intro-title .Explor h2{
-    margin-left: 146px;
-  }
-} 
-
-
-
-@media (max-width: 600px) {
-  .sec1 .row {
-    flex-direction: column;
-    margin-top: 90px;
-  }
-
-  .Explor h2 {
-    margin-left: 85px;
-  }
-
-  .col-md-6.intro-title.text {
-    margin-left: 0;
-  
-  }
-.sec1 .intro-title{
-  margin-top: 50px
-}
-  .explore-card-base {
-    margin-left: 90px;
-    margin-top: 100px;
-  }
-
-  .intro-title .Explor h2 {
-    padding-bottom: 17px;
-  }
-
-  p.Explore-text {
-    color: black !important;
-    text-align: center !important;
-   margin-left: 15px !important;
-    
-  }
-
-  br {
-    display: none;
-  }
-
-  .sec2 {
-    height: 250vh;
-  }
-
-  .intro-title a {
-    margin-left: 20px;
-
-  }
-  .row{
-      flex-wrap: wrap;
-  }
-}
-*/
-
-@keyframes SlowFloat {
-  0% {
-    transform: translateY(0);
-  }
-
-  100% {
-    transform: translateY(-10px);
-  }
+.card .left .info span {
+  display: block;
 }
 
-.slowfloat2s {
-  -webkit-animation: SlowFloat 2s infinite alternate;
-  animation: SlowFloat 2s infinite alternate;
+.card .left .info span.small {
+  top: 22px;
 }
 
-.slowfloat3s {
-  -webkit-animation: SlowFloat 3s infinite alternate;
-  animation: SlowFloat 3s infinite alternate;
+.card .left .buttons {
+  position: absolute;
+  text-align: center;
+  bottom: 32px;
+  width: 100%;
+  height: 80px;
 }
 
-
-
-
-
-<script src="https://img.atcoder.jp/public/ba514ee/js/lib/jquery-1.9.1.min.js"></script>
-        <link rel="stylesheet" href="https://img.atcoder.jp/public/ba514ee/css/cdn/katex.min.css">
-        <script defer="" src="https://img.atcoder.jp/public/ba514ee/js/cdn/katex.min.js"></script>
-        <script defer="" src="https://img.atcoder.jp/public/ba514ee/js/cdn/auto-render.min.js"></script>
-        <script>
-                $(function () { $('var').each(function () 
-                { var html = $(this).html().replace(/<sub>/g, '_{').replace(/<\/sub>/g, '}'); 
-                 $(this).html('\\(' + html + '\\)'); }); });
- </script>
-
- <script>  var katexOptions = {
-          delimiters: [
-              { left: "$$", right: "$$", display: true },
-              { left: "\\(", right: "\\)", display: false },
-              { left: "\\[", right: "\\]", display: true }
-          ], ignoredTags: ["script", "noscript", "style", "textarea", "code", "option"], 
-              ignoredClasses: ["prettyprint", "source-code-for-copy"],    
-              throwOnError: false};
-              document.addEventListener("DOMContentLoaded", function () { renderMathInElement(document.body, katexOptions); });
-</script>
-
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {inlineMath: [['$$$','$$$']], DisplayMath: [['$$$$$$','$$$$$$']]}
-    });
-
-</script>
-<script type="text/javascript" غير متزامن
-        src="https://mathjax.codeforces.org/MathJax.js?config=TeX-AMS_HTML-full">
-</script>
-
-
-
-
-loadMathJaxConfig() {
-  let scriptCodeForces = this.renderer.createElement('script');
-  scriptCodeForces.type = 'text/x-mathjax-config';
-  scriptCodeForces.text = `MathJax.Hub.Config({ tex2jax: {inlineMath: [['$$$','$$$']], displayMath: [['$$$$$$','$$$$$$']]}});`;
-
-  // let scriptAtCoder = this.renderer.createElement('script');
-  // scriptAtCoder.text = `var katexOptions = {
-  //   delimiters: [
-  //       { left: "$$", right: "$$", display: true },
-  //       { left: "\\(", right: "\\)", display: false },
-  //       { left: "\\[", right: "\\]", display: true }  ],
-  //       ignoredTags: ["script", "noscript", "style", "textarea", "code", "option"],
-  //       ignoredClasses: ["prettyprint", "source-code-for-copy"],
-  //       throwOnError: false};
-  //       document.addEventListener("DOMContentLoaded", function () { renderMathInElement(document.body, katexOptions);
-  //        });`;
-  this.renderer.appendChild(this.document.head, scriptCodeForces );
-  // this.renderer.appendChild(this.document.body, scriptAtCoder );
+.card .right {
+  position: absolute;
+  right: 0;
+  width: 130px;
+  height: 300px;
 }
 
-loadMathJax() {
-  let scriptCodeForces = this.renderer.createElement('script');
-  scriptCodeForces.type = 'text/javascript';
-  scriptCodeForces.async = false;
-  scriptCodeForces.src = 'https://mathjax.codeforces.org/MathJax.js?config=TeX-AMS_HTML-full';
- 
-  // let scriptAtCoder = this.renderer.createElement('script');
-  // scriptAtCoder.type = 'text/javascript';
-  // scriptAtCoder.async = false;
-  // scriptAtCoder.src = 'https://img.atcoder.jp/public/ba514ee/js/cdn/katex.min.js';
- 
-  this.renderer.appendChild(this.document.head, scriptCodeForces);
-  // this.renderer.appendChild(this.document.body,scriptAtCoder );
+.card .right .stats {
+  position: relative;
+  height: 100px;
+  background: rgb(200, 240, 190);
+  box-shadow: 0 -1px white;
+  cursor: pointer;
 }
 
+.card .right .stats:first-child {
+  box-shadow: none;
 }
-// "https://img.atcoder.jp/public/ba514ee/js/cdn/auto-render.min.js"
 
+.card .right .stats:hover {
+  background: rgb(190, 230, 180);
+}
 
+.card .right .stats span.big {
+  top: 30px;
+}
 
+.card .right .stats span.small {
+  top: 50px;
+}
 
+button {
+  padding-top: 2px;
+  text-transform: capitalize;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  width: 120px;
+  height: 26px;
+  margin: 8px 0;
+  border-radius: 15px;
+  border: solid 1px;
+  cursor: pointer;
+  position: relative;
+}
 
+button:hover:after {
+  content: "";
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+  left: 0;
+  top: 0;
+  position: absolute;
+  background: rgb(190, 230, 180);
+  opacity: 0.2;
+}
 
+button.primary {
+  color: white;
+  background: rgb(85, 115, 80);
+}
 
+button.primary:hover:after {
+  mix-blend-mode: lighten;
+}
 
+button.secondary {
+  color: rgb(85, 115, 80);
+  background: white;
+}
 
+button.secondary:hover:after {
+  mix-blend-mode: darken;
+}
 
+span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-transform: capitalize;
+  text-align: center;
+}
 
+span.big {
+  font-size: 18px;
+  font-weight: 600;
+}
 
-
-
-
-
-
-<mat-dialog-content>
-    <div class="dialog-container align-center justify-content-center row" >
-        <h2 class="dialog-title">Update Profile</h2>
-        <div class=" col-lg-12">
-            <form [formGroup]="updateProfielForm">
-
-                <div class="mt-3 mb-3 d-flex ">
-                    <label for="handle" class="col-md-2 mt-2 me-3">Handle</label>
-                    <input type="text" id="user-handle" class="form-control ms-lg-2" [value]="this.data.user.handle" placeholder="Handle" disabled/>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-6 ">
-                        <div class="d-flex fname pt-sm-3 ">
-                            <label for="firstName"style="width: 50%;">First Name</label>
-                            <input type="text" required id="user-first-name" class="form-control ms-lg-4"  placeholder="First Name" formControlName="firstName" />
-                        </div>
-                        <div class="m-0 validation"
-                            *ngIf="updateProfielForm.get('firstName')?.errors && updateProfielForm.get('firstName')?.touched ">
-                            <span *ngIf="updateProfielForm.get('firstName')?.getError('required')" 
-                                style="color:red">Required</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                    <div class="lname d-flex pt-sm-3"> 
-                        <label for="lastName" style="width: 50%; padding-top:3px">Last Name</label>
-                        <input type="text" required id="user-last-name" class="form-control" placeholder="Last Name"  formControlName="lastName" />
-                    </div>
-                        <div *ngIf="updateProfielForm.get('lastName')?.errors && updateProfielForm.get('lastName')?.touched ">
-                            <span *ngIf="updateProfielForm.get('lastName')?.getError('required')" class="m-0 " style="color:red">Required</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-3 mb-3 d-flex">
-                    <label for="school" class="col-md-2 mt-2 me-3">School</label>
-                    <input type="text" required id="user-school" class="form-control ms-lg-2" placeholder="School"
-                        formControlName="school" />
-                    <div *ngIf="updateProfielForm.get('school')?.errors && updateProfielForm.get('school')?.touched ">
-                        <span *ngIf="updateProfielForm.get('school')?.getError('required')" class="m-0"
-                            style="color:red">Required</span>
-                    </div>
-                </div>
-
-            </form>
-    </div>
-    </div>
-</mat-dialog-content>
-
-<mat-dialog-actions class="dialog-actions">
-    <div class="dialog-actions" style="display: flex; justify-content: flex-end; align-items: flex-end; width: 100%;">
-        <button type="button" class="btn btn-outline-danger" mat-dialog-close>Cancel</button>
-        <button type="submit" class="btn btn-primary" [disabled]="updateProfielForm.invalid"
-            (click)="handleUpdateProfile()">
-            <span *ngIf="isLoading"><i class="fa fa-spinner fa-spin"></i> Updatting</span>
-            <span *ngIf="!isLoading"> Update</span>
-        </button>
-    </div>
-</mat-dialog-actions>
+span.small {
+  font-size: 12px;
+  font-weight: 300;
+}
