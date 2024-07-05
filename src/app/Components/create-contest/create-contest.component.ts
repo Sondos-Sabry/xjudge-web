@@ -15,7 +15,7 @@ export class CreateContestComponent implements OnInit {
   isLoading:boolean = false;
   apiError:string = '';
   userGroups: any = [];
-
+  validationErrors: any = {};
   onlineJudges: any = [];
 
   isGroupSelected:boolean = false;
@@ -79,8 +79,12 @@ export class CreateContestComponent implements OnInit {
         }
       },
       error: (err)=> {
-        this.isLoading = false;
+        console.log(err)
+        this.validationErrors = err.error.errors || {};
+        console.log(this.validationErrors.durationSeconds);
+        
         this.apiError = err.error.message;
+        this.isLoading = false;
       }
     });
   }

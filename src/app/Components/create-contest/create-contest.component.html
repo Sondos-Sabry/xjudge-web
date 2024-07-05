@@ -1,174 +1,241 @@
 <mat-dialog-content>
-    <div class="dialog-container">
-        <h2 class="dialog-title">Create Contest</h2>
-        <form [formGroup]="createContestForm">
-            <div class="row" id="open-row" class="">
-                <div class="mt-3  d-flex">
-                    <label class="col-md-2 form-label mt-2 " for="submit-open">Type</label>
-                    <div class="btn-group ms-3 " role="group">
-                        <button type="radio" class="border btn btn btn-secondary"
-                            [class.active]="createContestForm.value.type === 'CLASSIC'" (click)="onClassicClick()"
-                            [ngStyle]="{'background-color': createContestForm.value.type === 'CLASSIC' ? '#0275d8' : 'white'}">
-                            <img src="/assets/images/classical.gif" height="20" width="20">
-                            <span [ngStyle]="{'color': createContestForm.value.type === 'CLASSIC'? 'white' : 'black'}">
-                                Classical Contest
-                            </span>
-                        </button>
-                        <button type="radio" class="border btn btn-secondary "
-                            [class.active]="createContestForm.value.type === 'GROUP'" (click)="onGroupClick()"
-                            [ngStyle]="{'background-color': createContestForm.value.type === 'GROUP' ? '#0275d8' : 'white'}">
-                            <img src="/assets/images/group.png" height="20" width="20">
-                            <span [ngStyle]="{'color': createContestForm.value.type === 'GROUP'? 'white' : 'black'}">
-                                Group Contest
-                            </span>
-                        </button>
-                    </div>
-                </div>
+  <div class="dialog-container">
+    <h2 class="dialog-title">Create Contest</h2>
+    <form [formGroup]="createContestForm">
+      <div class="row" id="open-row" class="">
+        <div class="type">
+          <div class="mt-3 d-flex">
+            <label class="col-md-2 form-label mt-2" for="submit-open">Type</label>
+            <div class="btn-group ms-3" role="group">
+              <button type="radio" class="border btn btn btn-secondary"
+                [class.active]="createContestForm.value.type === 'CLASSIC'" (click)="onClassicClick()" [ngStyle]="{
+                  'background-color':
+                    createContestForm.value.type === 'CLASSIC'
+                      ? '#0275d8'
+                      : 'white'
+                }">
+                <img src="/assets/images/classical.gif" height="20" width="20" />
+                <span [ngStyle]="{
+                    color:
+                      createContestForm.value.type === 'CLASSIC'
+                        ? 'white'
+                        : 'black'
+                  }">
+                  Classical Contest
+                </span>
+              </button>
+              <button type="radio" class="border btn btn-secondary"
+                [class.active]="createContestForm.value.type === 'GROUP'" (click)="onGroupClick()" [ngStyle]="{
+                  'background-color':
+                    createContestForm.value.type === 'GROUP'
+                      ? '#0275d8'
+                      : 'white'
+                }">
+                <img src="/assets/images/group.png" height="20" width="20" />
+                <span [ngStyle]="{
+                    color:
+                      createContestForm.value.type === 'GROUP'
+                        ? 'white'
+                        : 'black'
+                  }">
+                  Group Contest
+                </span>
+              </button>
             </div>
+          </div>
+         <span *ngIf="validationErrors['type']" style="color: red; margin-top: 80px; margin-left: 11vw;">{{ validationErrors.type }}</span>
+         </div> 
+        
+      <div class="title">
+        <div class="mt-3 mb-3 d-flex">
+          <label for="title" class="col-md-2 mt-2 me-3">Title</label>
+          <input type="text" required id="contest-title" class="form-control" placeholder="Title"
+            formControlName="title" />
+          <i></i>
+        </div>
+         <span *ngIf=" validationErrors['title'] && createContestForm.get('title')?.errors " style="color: red; margin-top: 80px; margin-left: 11vw">{{ validationErrors.title }}</span>
+       </div>
+     
+      <div class="Duration">
+      <div class="mb-3 mt-3 d-flex">
+        <label for="durationSeconds" class="col-md-2 mt-2 me-3">Duration</label>
+        <input id="durationSeconds" class="form-control" formControlName="durationSeconds" type="number"
+          placeholder="duration in minutes" />
+      <i></i>
+     </div>        
+     <span *ngIf="validationErrors['durationSeconds'] " style="color: red; margin-top: 80px; margin-left: 11vw">{{validationErrors.durationSeconds }}</span>
+       
+      </div>
+      
+      <div class="Group">
+      <div *ngIf="isGroupSelected && !isGroupSelectorDisabled" class="mt-3 mb-3 d-flex">
+        <label for="visibility" class="col-md-2 me-3 mt-4">Group</label>
+        <select *ngIf="userGroups.length >= 1" id="form3" class="form-select mt-3" formControlName="groupId">
+          <option value="0" selected>Select Group</option>
+          <option *ngFor="let group of userGroups" value="{{ group.id }}">
+            {{ group.name }}
+          </option>
+        </select>
+        <span *ngIf="userGroups.length == 0">You are not managing any group.</span>
+       <i></i>
+      </div>  
+      <span *ngIf="validationErrors['groupId'] &&  createContestForm.get('groupId')?.errors" style="color: red; margin-top: 80px; margin-left: 11vw">{{ validationErrors.groupId }}</span>
+       
+      </div>
+     
+      <div class="beginTime">
+      <div class="mt-3 mb-3 d-flex">
+        <label for="beginTime" class="col-md-2 me-3">Begin Time(UTC+2)</label>
+        <input id="beginTime" class="form-control" formControlName="beginTime" type="text"
+          placeholder="2024-04-17 23:00:00" type="datetime-local" />
+        
+        <i></i>
+      </div>
+      <span *ngIf="validationErrors['beginTime'] ||  createContestForm.get('beginTime')?.errors &&
+        createContestForm.get('beginTime')?.touched
+      " style="color: red; margin-top: 80px; margin-left: 11vw">{{ validationErrors.beginTime
+          }}</span>
+      </div>
+    
+    <div class="visibility">
+        <div class="mt-3 mb-3 d-flex">
+          <label for="visibility" class="col-md-2 me-3 mt-4">visibility</label>
+          <button type="radio" class="border btn btn btn-secondary"
+            [class.active]="createContestForm.value.visibility === 'PUBLIC'" (click)="
+              createContestForm.controls['visibility'].setValue('PUBLIC')
+            " [ngStyle]="{
+              'background-color':
+                createContestForm.value.visibility === 'PUBLIC'
+                  ? '#0275d8'
+                  : 'white'
+            }">
+            <span [ngStyle]="{
+                color:
+                  createContestForm.value.visibility === 'PUBLIC'
+                    ? 'white'
+                    : 'black'
+              }">
+              Public
+            </span>
+          </button>
+          <button type="radio" class="border btn btn btn-secondary"
+            [class.active]="createContestForm.value.visibility === 'PRIVATE'" (click)="
+              createContestForm.controls['visibility'].setValue('PRIVATE')
+            " [ngStyle]="{
+              'background-color':
+                createContestForm.value.visibility === 'PRIVATE'
+                  ? '#0275d8'
+                  : 'white'
+            }">
+            <span [ngStyle]="{
+                color:
+                  createContestForm.value.visibility === 'PRIVATE'
+                    ? 'white'
+                    : 'black'
+              }">
+              Private
+            </span>
+          </button>
+          <i></i>
+        </div> 
+        <span *ngIf="validationErrors['visibility']" style="color: red; margin-top: 80px; margin-left: 11vw">{{
+            validationErrors.visibility }}</span>
+         
+      </div>
+     
+      <div class="Password">
+        <div class="mb-3 mt-3 d-flex">
+          <label for="password" class="col-md-2 mt-2 me-3">Password</label>
+          <input id="password" class="form-control" formControlName="password" type="password" placeholder="Password" />      
+          <i></i>
+        </div>
+        <span *ngIf="validationErrors['password']" style="color: red; margin-top: 80px">{{ validationErrors.password }}</span>
+      </div>
+    
+      <div class="Description">
+        <div class="mt-3 mb-3 d-flex">
+          <label for="description" class="col-md-2 mt-3 me-3">Description</label>
+          <textarea id="description" class="form-control" formControlName="description" placeholder="Description"
+            rows="4"></textarea>
+        
+         <i></i>
+        </div>  
+         <div *ngIf="
+              createContestForm.get('description')?.errors &&
+              createContestForm.get('description')?.touched
+            ">
+            <span *ngIf="createContestForm.get('description')?.getError('required')" class="m-0"
+              style="color: red">Required</span>
+          </div>
+        <span *ngIf="validationErrors['description'] &&  createContestForm.get('description')?.errors" style="color: red; margin-top: 80px; margin-left: 11vw">{{
+            validationErrors.description }}</span>
+          
+      </div>
+   
+      <table formArrayName="problems" class="table table-striped table-borderless">
+        <thead>
+          <tr>
+            <th class="text-right">Operations</th>
+            <th class="text-center">OJ</th>
+            <th class="text-center">ProbNum</th>
+            <th class="text-center">Wgt.</th>
+            <th class="text-center">Alias</th>
+            <th class="text-center">Letter</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let problem of getFormProblems(); let i = index" [formGroupName]="i" [id]="'addTable' + i"
+            class="cp_row real">
+            <td class="text-right">
+              <button class="btn btn-outline-danger" [disabled]="!enableDeleteProblem" (click)="removeProblemForm(i)">
+                <i class="fa fa-remove"></i>
+              </button>
+            </td>
+            <td>
+              <select class="form-select" formControlName="ojType">
+                <option value="">oj</option>
+                <option *ngFor="let onlineJudge of onlineJudges" [value]="onlineJudge">
+                  {{ onlineJudge }}
+                </option>
+              </select>
+            </td>
+            <td><input class="form-control" formControlName="code" /></td>
+          
+            <td>
+              <input class="form-control text-center" type="number" formControlName="problemWeight" />
+            </td>
+            <td>
+              <input class="form-control" formControlName="problemAlias" />
+            </td>
+            <td class="text-center">{{ getLetter(i) }}</td>
+          </tr>
+        </tbody>
+      </table>
 
-            <div class="mt-3 mb-3 d-flex">
-                <label for="title" class="col-md-2 mt-2 me-3">Title</label>
-                <input type="text" required id="contest-title" class="form-control" placeholder="Title"
-                    formControlName="title" />
-                <div *ngIf="createContestForm.get('title')?.errors && createContestForm.get('title')?.touched ">
-                    <span *ngIf="createContestForm.get('title')?.getError('required')" class="m-0"
-                        style="color:red">Required</span>
-                </div>
-                <i></i>
-            </div>
-
-            <div class="mb-3 mt-3 d-flex">
-                <label for="durationSeconds" class="col-md-2 mt-2 me-3">Duration</label>
-                <input id="durationSeconds" class="form-control" formControlName="durationSeconds" type="number"
-                    placeholder="duration in minutes" />
-                <div
-                    *ngIf="createContestForm.get('durationSeconds')?.errors && createContestForm.get('durationSeconds')?.touched ">
-                    <span *ngIf="createContestForm.get('durationSeconds')?.getError('required')" class="m-0"
-                        style="color:red">Required</span>
-                </div>
-                <i></i>
-            </div>
-
-            <div *ngIf="isGroupSelected && !isGroupSelectorDisabled" class="mt-3 mb-3 d-flex">
-                <label for="visibility" class="col-md-2 me-3 mt-4">Group</label>
-                <select *ngIf="userGroups.length >= 1" id="form3" class="form-select mt-3" formControlName="groupId">
-                    <option value="0" selected>Select Group</option>
-                    <option *ngFor="let group of userGroups" value="{{group.id}}">{{group.name}}</option>
-                </select>
-                <span *ngIf="userGroups.length == 0">You are not managing any group.</span>
-                <div *ngIf="createContestForm.get('groupId')?.errors && createContestForm.get('groupId')?.touched ">
-                    <span *ngIf="createContestForm.get('groupId')?.getError('required')" class="m-0"
-                        style="color:red">Required</span>
-                </div>
-                <i></i>
-            </div>
-
-            <div class="mt-3 mb-3 d-flex">
-                <label for="beginTime" class="col-md-2 me-3">Begin Time(UTC+2)</label>
-                <input id="beginTime" class="form-control" formControlName="beginTime" type="text"
-                    placeholder="2024-04-17 23:00:00" type="datetime-local" />
-                <div *ngIf="createContestForm.get('beginTime')?.errors && createContestForm.get('beginTime')?.touched ">
-                    <span *ngIf="createContestForm.get('beginTime')?.getError('required')" class="m-0"
-                        style="color:red">Required</span>
-                </div>
-                <i></i>
-            </div>
-
-            <div class="mt-3 mb-3 d-flex">
-                <label for="visibility" class="col-md-2 me-3 mt-4">visibility</label>
-                <button type="radio" class="border btn btn btn-secondary"
-                    [class.active]="createContestForm.value.visibility === 'PUBLIC'"
-                    (click)="createContestForm.controls['visibility'].setValue('PUBLIC')"
-                    [ngStyle]="{'background-color': createContestForm.value.visibility === 'PUBLIC' ? '#0275d8' : 'white'}">
-                    <span [ngStyle]="{'color': createContestForm.value.visibility === 'PUBLIC'? 'white' : 'black'}">
-                        Public
-                    </span>
-                </button>
-                <button type="radio" class="border btn btn btn-secondary"
-                    [class.active]="createContestForm.value.visibility === 'PRIVATE'"
-                    (click)="createContestForm.controls['visibility'].setValue('PRIVATE')"
-                    [ngStyle]="{'background-color': createContestForm.value.visibility === 'PRIVATE' ? '#0275d8' : 'white'}">
-                    <span [ngStyle]="{'color': createContestForm.value.visibility === 'PRIVATE'? 'white' : 'black'}">
-                        Private
-                    </span>
-                </button>
-                <div
-                    *ngIf="createContestForm.get('visibility')?.errors && createContestForm.get('visibility')?.touched ">
-                    <span *ngIf="createContestForm.get('visibility')?.getError('required')" class="m-0"
-                        style="color:red">Required</span>
-                </div>
-                <i></i>
-            </div>
-
-            <div class="mb-3 mt-3 d-flex">
-                <label for="password" class="col-md-2 mt-2 me-3">Password</label>
-                <input id="password" class="form-control" formControlName="password" type="password"
-                    placeholder="Password" />
-                <i></i>
-            </div>
-
-            <div class="mt-3 mb-3 d-flex">
-                <label for="description" class="col-md-2 mt-3 me-3">Description</label>
-                <textarea id="description" class="form-control" formControlName="description"
-                    placeholder="Description" rows="4"></textarea>
-                <div
-                    *ngIf="createContestForm.get('description')?.errors && createContestForm.get('description')?.touched ">
-                    <span *ngIf="createContestForm.get('description')?.getError('required')" class="m-0"
-                        style="color:red">Required</span>
-                </div>
-                <i></i>
-            </div>
-
-            <table formArrayName="problems" class="table table-striped table-borderless">
-                <thead>
-                    <tr>
-                        <th class="text-right">Operations</th>
-                        <th class="text-center">OJ</th>
-                        <th class="text-center">ProbNum</th>
-                        <th class="text-center">Wgt.</th>
-                        <th class="text-center">Alias</th>
-                        <th class="text-center">Letter</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let problem of getFormProblems(); let i = index" [formGroupName]="i"
-                        [id]="'addTable' + i" class="cp_row real">
-                        <td class="text-right">
-                            <button class="btn btn-outline-danger" [disabled]="!enableDeleteProblem"
-                                (click)="removeProblemForm(i)">
-                                <i class="fa fa-remove"></i>
-                            </button>
-                        </td>
-                        <td>
-                            <select class="form-select" formControlName="ojType">
-                                <option value="">oj</option>
-                                <option *ngFor="let onlineJudge of onlineJudges" [value]="onlineJudge">{{onlineJudge}}</option>
-                            </select>
-                        </td>
-                        <td><input class="form-control" formControlName="code"></td>
-                        <td><input class="form-control text-center" type="number" formControlName="problemWeight"></td>
-                        <td><input class="form-control" formControlName="problemAlias"></td>
-                        <td class="text-center">{{getLetter(i)}}</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="form-group">
-                <button class="btn btn-secondary w-100" (click)="addNewProblemForm()">
-                    <i class="fa fa-plus"></i> Add a problem
-                </button>
-            </div>
-        </form>
-    </div>
+      <div class="form-group">
+        <button class="btn btn-secondary w-100" (click)="addNewProblemForm()">
+          <i class="fa fa-plus"></i> Add a problem
+        </button>
+      </div>
+    </div> 
+  </form>
+   
+  </div>
 </mat-dialog-content>
 
 <mat-dialog-actions class="dialog-actions">
-    <div class="dialog-actions" style="display: flex; justify-content: flex-end; align-items: flex-end; width: 100%;">
-        <button type="button" class="btn btn-outline-danger" mat-dialog-close>Cancel</button>
-        <button type="submit" class="btn btn-primary" [disabled]="createContestForm.invalid"
-            (click)="handleCreateContest()">
-            <span *ngIf="isLoading"><i class="fa fa-spinner fa-spin"></i> Creating</span>
-            <span *ngIf="!isLoading"> Create</span>
-        </button>
-    </div>
+  <div class="dialog-actions" style="
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      width: 100%;
+    ">
+    <button type="button" class="btn btn-outline-danger" mat-dialog-close>
+      Cancel
+    </button>
+    <button type="submit" class="btn btn-primary" (click)="handleCreateContest()">
+      <!-- <span *ngIf="isLoading"><i class="fa fa-spinner fa-spin"></i> Creating</span> -->
+      <span> Create</span>
+    </button>
+  </div>
 </mat-dialog-actions>
